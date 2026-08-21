@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite it as below."
+title: "Neural Prediction Decorrelation"
+type: software
+authors:
+  - family-names: Skrill
+    given-names: David
+    affiliation: University of Rochester Medical Center
+  - family-names: Feather
+    given-names: Jenelle
+    affiliation: Carnegie Mellon University
+  - family-names: Norman-Haignere
+    given-names: "Sam V."
+    affiliation: University of Rochester Medical Center
+license: MIT

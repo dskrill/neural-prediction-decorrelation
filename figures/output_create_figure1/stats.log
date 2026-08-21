@@ -1,0 +1,32 @@
+Output: output_create_figure1_test
+Median AR model prediction accuracy (all voxels L): 0.382533477572724
+Median AR model prediction accuracy (all voxels R): 0.346772035336019
+Median Standard model prediction accuracy (all voxels L): 0.4034069120338183
+Median Standard model prediction accuracy (all voxels R): 0.35926970700515654
+[fetch_surf_fsaverage] Dataset found in /home/dskrill/nilearn_data/fsaverage
+Pearson correlation between group similarity between predictions and ceiling (robust model): 0.9824949786549598
+Pearson correlation between individual similarity between predictions and ceiling (robust model): 0.8805656049344952
+Median correlation between model predictions (all voxels): 0.6243433421431315
+Median ceiling correlation (all voxels): 0.6240788271603269
+Subject-level paired t-test (prediction accuracy):
+Subject-level paired t-test (Medial Heschl's gyrus): t=-4.728, p=0.000, corrected p=0.001
+
+Subject-level paired t-test (Lateral Heschl's gyrus): t=-5.619, p=0.000, corrected p=0.000
+
+Subject-level paired t-test (Planum polare): t=-5.939, p=0.000, corrected p=0.000
+
+Subject-level paired t-test (Planum temporale): t=-3.353, p=0.003, corrected p=0.010
+
+Subject-level paired t-test (Superior temporal gyrus): t=-2.403, p=0.027, corrected p=0.061
+
+Subject-level paired t-test (correlation between predictions and ceiling):
+Subject-level paired t-test (Medial Heschl's gyrus): t=1.118, p=0.278, corrected p=0.792
+
+Subject-level paired t-test (Lateral Heschl's gyrus): t=2.698, p=0.014, corrected p=0.059
+
+Subject-level paired t-test (Planum polare): t=2.662, p=0.015, corrected p=0.059
+
+Subject-level paired t-test (Planum temporale): t=0.000, p=1.000, corrected p=1.000
+
+Subject-level paired t-test (Superior temporal gyrus): t=-5.066, p=0.000, corrected p=0.001
+

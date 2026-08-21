@@ -1,0 +1,187 @@
+Output directory: output_create_figure3_test
+[fetch_surf_fsaverage] Dataset found in /home/dskrill/nilearn_data/fsaverage
+[L] Robust and standard natural predictions (individual):
+  ccc: 0.930
+  ci_lower: 0.928
+  ci_upper: 0.932
+  pearson_r: 0.932
+  n: 13125.000
+
+[L] Robust and standard natural predictions (individual2):
+  ccc: 0.913
+  ci_lower: 0.910
+  ci_upper: 0.915
+  pearson_r: 0.913
+  n: 13125.000
+
+[L] Robust and standard natural predictions (group):
+  ccc: 0.979
+  ci_lower: 0.978
+  ci_upper: 0.979
+  pearson_r: 0.979
+  n: 13125.000
+
+[L] Robust and standard npd predictions (individual):
+  ccc: -0.017
+  ci_lower: -0.034
+  ci_upper: 0.001
+  pearson_r: -0.044
+  n: 13125.000
+
+[L] Robust and standard npd predictions (individual2):
+  ccc: -0.114
+  ci_lower: -0.131
+  ci_upper: -0.097
+  pearson_r: -0.255
+  n: 13125.000
+
+[L] Robust and standard npd predictions (group):
+  ccc: 0.018
+  ci_lower: 0.001
+  ci_upper: 0.035
+  pearson_r: 0.092
+  n: 13125.000
+
+[L] Robust and npd natural predictions (individual):
+  ccc: 0.857
+  ci_lower: 0.852
+  ci_upper: 0.861
+  pearson_r: 0.874
+  n: 13125.000
+
+[L] Robust and npd natural predictions (individual2):
+  ccc: 0.714
+  ci_lower: 0.706
+  ci_upper: 0.723
+  pearson_r: 0.739
+  n: 13125.000
+
+[L] Robust and npd natural predictions (group):
+  ccc: 0.910
+  ci_lower: 0.907
+  ci_upper: 0.913
+  pearson_r: 0.932
+  n: 13125.000
+
+[L] Standard and npd natural predictions (individual):
+  ccc: 0.008
+  ci_lower: -0.009
+  ci_upper: 0.026
+  pearson_r: 0.025
+  n: 13125.000
+
+[L] Standard and npd natural predictions (individual2):
+  ccc: -0.068
+  ci_lower: -0.085
+  ci_upper: -0.051
+  pearson_r: -0.142
+  n: 13125.000
+
+[L] Standard and npd natural predictions (group):
+  ccc: 0.025
+  ci_lower: 0.008
+  ci_upper: 0.042
+  pearson_r: 0.118
+  n: 13125.000
+
+[R] Robust and standard natural predictions (individual):
+  ccc: 0.913
+  ci_lower: 0.910
+  ci_upper: 0.916
+  pearson_r: 0.913
+  n: 12210.000
+
+[R] Robust and standard natural predictions (individual2):
+  ccc: 0.943
+  ci_lower: 0.941
+  ci_upper: 0.945
+  pearson_r: 0.943
+  n: 12210.000
+
+[R] Robust and standard natural predictions (group):
+  ccc: 0.979
+  ci_lower: 0.978
+  ci_upper: 0.980
+  pearson_r: 0.979
+  n: 12210.000
+
+[R] Robust and standard npd predictions (individual):
+  ccc: -0.129
+  ci_lower: -0.146
+  ci_upper: -0.111
+  pearson_r: -0.241
+  n: 12210.000
+
+[R] Robust and standard npd predictions (individual2):
+  ccc: -0.024
+  ci_lower: -0.042
+  ci_upper: -0.006
+  pearson_r: -0.058
+  n: 12210.000
+
+[R] Robust and standard npd predictions (group):
+  ccc: -0.024
+  ci_lower: -0.041
+  ci_upper: -0.006
+  pearson_r: -0.092
+  n: 12210.000
+
+[R] Robust and npd natural predictions (individual):
+  ccc: 0.782
+  ci_lower: 0.776
+  ci_upper: 0.789
+  pearson_r: 0.826
+  n: 12210.000
+
+[R] Robust and npd natural predictions (individual2):
+  ccc: 0.844
+  ci_lower: 0.839
+  ci_upper: 0.849
+  pearson_r: 0.861
+  n: 12210.000
+
+[R] Robust and npd natural predictions (group):
+  ccc: 0.935
+  ci_lower: 0.932
+  ci_upper: 0.937
+  pearson_r: 0.947
+  n: 12210.000
+
+[R] Standard and npd natural predictions (individual):
+  ccc: -0.036
+  ci_lower: -0.054
+  ci_upper: -0.018
+  pearson_r: -0.088
+  n: 12210.000
+
+[R] Standard and npd natural predictions (individual2):
+  ccc: -0.004
+  ci_lower: -0.022
+  ci_upper: 0.014
+  pearson_r: -0.009
+  n: 12210.000
+
+[R] Standard and npd natural predictions (group):
+  ccc: -0.023
+  ci_lower: -0.041
+  ci_upper: -0.005
+  pearson_r: -0.092
+  n: 12210.000
+
+Subject-level paired t-test (Medial Heschl's gyrus): t=-5.515, p=0.001, corrected p=0.001
+
+Subject-level paired t-test (Lateral Heschl's gyrus): t=-14.498, p=0.000, corrected p=0.000
+
+Subject-level paired t-test (Planum polare): t=-7.585, p=0.000, corrected p=0.000
+
+Subject-level paired t-test (Planum temporale): t=-14.651, p=0.000, corrected p=0.000
+
+Subject-level paired t-test (Superior temporal gyrus): t=-19.076, p=0.000, corrected p=0.000
+
+Value to ROI mapping:
+  Medial Heschl's gyrus: 0
+  Lateral Heschl's gyrus: 1
+  Planum polare: 2
+  Planum temporale: 3
+  Superior temporal gyrus: 4
+[fetch_surf_fsaverage] Dataset found in /home/dskrill/nilearn_data/fsaverage
