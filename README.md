@@ -72,8 +72,10 @@ apt-get install ffmpeg sox libsndfile1
 Then install the python libraries:
 
 ```bash
-pip install -r requirements.txt
+pip install --no-build-isolation -r requirements.txt
 ```
+Installation may take a few minutes.
+
 ---
 
 ## Quick Start
