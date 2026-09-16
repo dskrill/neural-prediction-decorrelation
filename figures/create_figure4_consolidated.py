@@ -227,7 +227,7 @@ def main():
         pio.write_image(fig, str(out / f'{name}_clean.svg'),
                         width=width, height=height, scale=1)
 
-    def save_bar(fig, name, width=260, height=180):
+    def save_box(fig, name, width=260, height=180):
         out = args.output_dir
         fig.update_layout(showlegend=True, width=width * 2, height=height * 2)
         fig.write_html(str(out / f'{name}.html'),
@@ -341,23 +341,12 @@ def main():
     dist_npd = np.linalg.norm(R_rob[:60,  :] - R_std[:60,  :], axis=-1)
     dist_nat = np.linalg.norm(R_rob[-60:, :] - R_std[-60:, :], axis=-1)
 
-    rng = np.random.default_rng(42)
-
-    def bootstrap_ci(vals, n_boot=5000, ci=95):
-        vals = np.asarray(vals)
-        boots = rng.choice(vals, size=(n_boot, len(vals)), replace=True)
-        dist = np.median(boots, axis=1)
-        lo = np.percentile(dist, (100 - ci) / 2)
-        hi = np.percentile(dist, 100 - (100 - ci) / 2)
-        med = float(np.median(vals))
-        return med, float(med - lo), float(hi - med)
-
-    bar_w       = 0.25
-    line_w      = 2.0
+    box_w       = 0.25
+    box_line_w  = 1.0   # thin: box edges encode quartiles, so keep them crisp
     g_nat, g_npd = 0.0, 0.4
 
-    _bar_layout = dict(
-        barmode='overlay',
+    _box_layout = dict(
+        boxmode='overlay',   # boxes sit at their explicit x0, no auto-offset
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
         font=dict(size=10, family='Times New Roman'),
@@ -372,29 +361,34 @@ def main():
             showgrid=True, gridcolor='rgba(128,128,128,0.3)',
             zeroline=True, zerolinecolor='black',
             showticklabels=True,
+            rangemode='tozero',   # anchor both panels at 0
         ),
-        width=260, height=180,
         showlegend=False,
     )
 
+    # Box-and-whisker (no bar plots — Nature Neuroscience style): box spans the
+    # inter-quartile range, centre line is the median, whiskers extend to the
+    # most extreme point within 1.5 x IQR, and points beyond that are drawn.
     fig4 = go.Figure()
     for x_pos, vals, label, fill in [
         (g_nat, dist_nat, 'Natural', 'rgba(180,180,180,0.5)'),
         (g_npd, dist_npd, 'NPD',     'rgba(255,255,255,0.5)'),
     ]:
-        med, ci_lo, ci_hi = bootstrap_ci(vals)
-        fig4.add_trace(go.Bar(
-            x=[x_pos], y=[med], name=label,
-            marker=dict(color=fill, line=dict(color='black', width=line_w)),
-            width=bar_w, showlegend=False,
-            error_y=dict(type='data', array=[ci_hi], arrayminus=[ci_lo],
-                         color='black', thickness=line_w, width=8),
+        fig4.add_trace(go.Box(
+            x0=x_pos, y=vals, name=label,
+            fillcolor=fill,
+            line=dict(color='black', width=box_line_w),
+            marker=dict(color='black', size=2, opacity=0.6),
+            boxpoints='outliers', width=box_w, whiskerwidth=0.5,
+            showlegend=False,
         ))
 
-    fig4.update_layout(**_bar_layout,
+    fig4.update_layout(**_box_layout,
                        yaxis_title='Distance (robust − standard)',
                        title=dict(text='Robust vs standard prediction distance'))
-    save_bar(fig4, 'distances')
+    # Gridlines at 1000/2000/3000 only; 0 carries the black zeroline instead.
+    fig4.update_yaxes(tick0=0, dtick=1000)
+    save_box(fig4, 'distances', width=182, height=260)      # w/h = 0.70
     print('Saved distances')
 
     # ── Plot 4b: Accuracy (predictions vs measured) ──────────────────────────────
@@ -404,10 +398,13 @@ def main():
     dist_rob_nat = np.linalg.norm(R_rob[-60:, :] - R_meas[-60:, :], axis=-1)
     dist_std_nat = np.linalg.norm(R_std[-60:, :] - R_meas[-60:, :], axis=-1)
 
-    sub_w = 0.14                   # width of each sub-bar
-    sub_dx = sub_w / 2             # bars touch within a group (no gap)
+    sub_w = 0.14                   # width of each sub-box
+    sub_gap = 0.02                 # small gap between the two boxes in a group
+    sub_dx = (sub_w + sub_gap) / 2
     g_nat_b, g_npd_b = 0.0, 0.42  # group centers — gap between groups >> 0 within
 
+    # Box-and-whisker, as in Plot 4: IQR box, median line, whiskers to the most
+    # extreme point within 1.5 x IQR, outliers drawn individually.
     fig4b = go.Figure()
     for x_pos, rob_vals, std_vals in [
         (g_nat_b, dist_rob_nat, dist_std_nat),
@@ -417,17 +414,16 @@ def main():
             (-sub_dx, rob_vals, ROBUST_COLOR),
             (+sub_dx, std_vals, STANDARD_COLOR),
         ]:
-            med, ci_lo, ci_hi = bootstrap_ci(vals)
-            fig4b.add_trace(go.Bar(
-                x=[x_pos + dx], y=[med],
-                marker=dict(color=color,
-                            line=dict(color='black', width=line_w)),
-                width=sub_w, showlegend=False,
-                error_y=dict(type='data', array=[ci_hi], arrayminus=[ci_lo],
-                             color='black', thickness=line_w, width=6),
+            fig4b.add_trace(go.Box(
+                x0=x_pos + dx, y=vals,
+                fillcolor=color,
+                line=dict(color='black', width=box_line_w),
+                marker=dict(color='black', size=2, opacity=0.6),
+                boxpoints='outliers', width=sub_w, whiskerwidth=0.5,
+                showlegend=False,
             ))
 
-    fig4b.update_layout(**_bar_layout,
+    fig4b.update_layout(**_box_layout,
                         yaxis_title='Distance (predicted − measured)',
                         title=dict(text='Prediction accuracy'))
     fig4b.update_layout(xaxis=dict(
@@ -436,7 +432,7 @@ def main():
         showgrid=False, zeroline=False, showticklabels=True,
         range=[-0.22, 0.64],
     ))
-    save_bar(fig4b, 'distances_accuracy')
+    save_box(fig4b, 'distances_accuracy', width=192, height=240)  # w/h = 0.80
     print('Saved distances_accuracy')
 
     # ── RSM computation ──────────────────────────────────────────────────────────

@@ -14,4 +14,4 @@ NAT-NAT vs NPD-NAT similarity (independent t-test):  t=-3.399, p=0.0006812
 Robust-standard distance, NAT vs NPD (independent t-test):  t=-13.498, p=1.111e-25
 Prediction accuracy, robust vs standard — NAT (paired t-test):  t=-3.020, p=0.003736
 Prediction accuracy, robust vs standard — NPD (paired t-test):  t=-6.101, p=8.793e-08
-All figures written to output_create_figure4_test
+All figures written to output_create_figure4_consolidated
